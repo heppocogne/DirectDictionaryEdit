@@ -30,7 +30,7 @@ func _parse_text(source: String):
 	check_setter.compile("^[\t ]*set")
 	if check_func.search(source) || check_setter.search(source):
 		return null
-	
+
 	var gdscript := GDScript.new()
 	gdscript.source_code = "@tool\nvar data =%s" % [source]
 	gdscript.reload()
@@ -39,7 +39,7 @@ func _parse_text(source: String):
 		obj.set_script(gdscript)
 		if &"data" in obj:
 			return obj.data
-	
+
 	return null
 
 
