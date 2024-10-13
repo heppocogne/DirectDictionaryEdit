@@ -11,6 +11,10 @@ config_version=5
 [application]
 
 config/name="Dictionary Direct Edit"
+run/main_scene="res://node.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dictionary_direct_edit/plugin.cfg")

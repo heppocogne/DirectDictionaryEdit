@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://y6damliu36y7"]
+
+[ext_resource type="Script" path="res://addons/dictionary_direct_edit/ui/dictionary_editor.gd" id="1_gbjv6"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 200.0
+offset_bottom = 200.0
+script = ExtResource("1_gbjv6")
+
+[node name="CodeEdit" type="CodeEdit" parent="."]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 14
+placeholder_text = "Dictionary expression"
+draw_tabs = true
+line_folding = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Update"
+
+[connection signal="text_set" from="CodeEdit" to="CodeEdit" method="_on_text_set"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
