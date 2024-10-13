@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func set_dictionary(dict: Dictionary):
-	if !_self_update:
+	if !_self_update and _editor!=null:
 		_editor.text = var_to_str(dict)
 	_self_update = false
 
