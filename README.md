@@ -1,6 +1,7 @@
 # About this addon
 The default inspector of Dictionary property requires a lot of manipulations to add, edit, and remove key-value pairs.  
 This addon allows you to edit a Dictionary property with text.
+
 ![image](https://raw.githubusercontent.com/heppocogne/DirectDictionaryEdit/refs/heads/main/screenshot/image.png)
 
 # Usage
