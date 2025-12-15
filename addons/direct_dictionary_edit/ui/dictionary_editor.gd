@@ -18,9 +18,25 @@ func _ready() -> void:
 
 
 func set_dictionary(dict: Dictionary):
-	if !_self_update and _editor!=null:
-		_editor.text = var_to_str(dict)
+	if !_self_update and _editor != null:
+		# TODO: Support Transform2D/3D
+		_editor.text = _get_indented(var_to_str(dict))
 	_self_update = false
+
+
+static func _get_indented(s: String) -> String:
+	var indent := 0
+	var result := ""
+	for line in s.split('\n'):
+		if line == '}' or line == "},":
+			indent = maxi(0, indent - 1)
+		for _i in indent:
+			result += '\t'
+		result += line + '\n'
+		if line.ends_with('{'):
+			indent += 1
+	
+	return result
 
 
 func _parse_text(source: String):
@@ -30,16 +46,16 @@ func _parse_text(source: String):
 	check_setter.compile("^[\t ]*set")
 	if check_func.search(source) || check_setter.search(source):
 		return null
-
+	
 	var gdscript := GDScript.new()
-	gdscript.source_code = "@tool\nvar data =%s" % [source]
+	gdscript.source_code = "@tool\nvar data:Dictionary = %s" % [source]
 	gdscript.reload()
 	if gdscript.can_instantiate():
 		var obj := RefCounted.new()
 		obj.set_script(gdscript)
 		if &"data" in obj:
 			return obj.data
-
+	
 	return null
 
 

@@ -1,16 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckqmpx4vrchmn"]
 
-[ext_resource type="Script" path="res://node.gd" id="1_606ay"]
+[ext_resource type="Script" uid="uid://br752gr5rvobi" path="res://node.gd" id="1_606ay"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_606ay")
 dict1 = {
-"a": 0,
-"b": Vector2(1, 2),
-"c": Vector3(3, 4, 5),
-"d": {},
+"d": {
+"flag": false
+},
+"i": 0,
 "n": NodePath("Child"),
-"r": Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+"v2": Vector2(1, 2),
+"v3": Vector3(3, 4, 5)
 }
 
 [node name="Child" type="Node" parent="."]
